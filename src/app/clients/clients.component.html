@@ -1,0 +1,30 @@
+<h1>Clientes</h1>
+<button type="button" class="btn btn-primary" [routerLink]="'client/create'">Adicionar</button>
+<br><br>
+
+<table class="table table-dark table-striped" *ngIf="responseClient">
+    <thead class="">
+        <td scope="col">Nome</td>
+        <td scope="col">Documento</td>
+        <td scope="col">Telefone</td>
+        <td scope="col">...</td>
+    </thead>
+    <tbody class="">
+        <tr *ngFor="let client of responseClient">
+            <td scope="row"> {{client.nome}}</td>
+            <td scope="row">{{client.cpfcnpj}}</td>
+            <td scope="row">{{client.telefone}}</td>
+            <td scope="row">
+                <button type="button" class="btn btn-primary" [routerLink]="['client/edit/',client.id]">Atualizar</button> |
+                <button type="button" class="btn btn-danger" (click)="onDelete(client)">Deletar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja excluir o cliente {{client.nome}}?</p>
+    <button type="button" class="btn btn-default" (click)="onConfirmDelete()" >Sim</button>
+    <button type="button" class="btn btn-primary" (click)="onDeclineDelete()" >Não</button>
+  </div>
+</ng-template>

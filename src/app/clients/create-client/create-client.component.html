@@ -1,0 +1,85 @@
+<h2>Cadastrar Cliente</h2>
+<form>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm">
+                <label for="nome">Nome: </label>
+                <input type="text" class="form-control" id="nome" [ngModelOptions]="{standalone: true}" placeholder="Insira o nome" [(ngModel)]="client.nome">
+            </div>
+            <div class="col-sm">
+                <label for="tipoDocumento" aria-label="Default select example">Tipo Documento: </label>
+                <select class="selectpicker" aria-label="Default select example" [ngModelOptions]="{standalone: true}" id=tipoDocumento [(ngModel)]="client.tipoDocumento">
+                    <option *ngFor="let o of options" [value]="o.id">{{o.nome}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="documento">Documento: </label>
+                <input type="text" class="form-control" id="documento" [ngModelOptions]="{standalone: true}" placeholder="Insira o documento" [(ngModel)]="client.cpfcnpj">
+            </div>
+            <div class="col-sm">
+                <label for="email">Email: </label>
+                <input type="email" class="form-control" id="email" [ngModelOptions]="{standalone: true}" placeholder="Insira o email" [(ngModel)]="client.email">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="cep">Cep: </label>
+                <input type="text" class="form-control" id="cep" [ngModelOptions]="{standalone: true}"placeholder="Insira o cep" [(ngModel)]="client.cep">
+            </div>
+            <div class="col-sm">
+                <label for="endereco">Endereco: </label>
+                <input type="text" class="form-control" id="endereco" [ngModelOptions]="{standalone: true}"placeholder="Insira o Endereco" [(ngModel)]="client.endereco">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="numero">Número: </label>
+                <input type="text" class="form-control" id="numero" [ngModelOptions]="{standalone: true}" placeholder="Insira o numero" [(ngModel)]="client.numero">
+            </div>
+            <div class="col-sm">
+                <label for="complemento">Complemento: </label>
+                <input type="text" class="form-control" id="complemento" [ngModelOptions]="{standalone: true}" placeholder="Insira o Complemento" [(ngModel)]="client.complemento">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="bairro">Bairro: </label>
+                <input type="text" class="form-control" id="bairro" [ngModelOptions]="{standalone: true}" placeholder="Insira o bairro" [(ngModel)]="client.bairro">
+            </div>
+            <div class="col-sm">
+                <label for="telefone">telefone: </label>
+                <input type="text" class="form-control" id="telefone" [ngModelOptions]="{standalone: true}" placeholder="Insira o telefone" [(ngModel)]="client.telefone">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm">
+                <label for="celular">celular: </label>
+                <input type="text" class="form-control" id="celular" [ngModelOptions]="{standalone: true}" placeholder="Insira o bairro" [(ngModel)]="client.bairro">
+            </div>
+            <div class="col-sm">
+                <label for="telefone">telefone: </label>
+                <input type="text" class="form-control" id="telefone" [ngModelOptions]="{standalone: true}" placeholder="Insira o telefone" [(ngModel)]="client.telefone">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="estadoId">Estado: </label>
+                <select class="selectpicker" aria-label="Default select example"  [ngModelOptions]="{standalone: true}" id=estadoId [(ngModel)]="client.estadoId" (change)="getCidade($event)">
+                    <option *ngFor="let e of estado" [value]="e.id">{{e.sigla}}</option>
+                </select>
+            </div>
+            <div class="col-sm">
+                <label for="cidadeId">Cidade: </label>
+                <select class="selectpicker" aria-label="Default select example" id=cidadeId [ngModelOptions]="{standalone: true}" [(ngModel)]="client.cidadeId">
+                    <option *ngFor="let c of cidade" [value]="c.id">{{c.nome}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary" (click)="save()">Salvar</button>
+    <button class="btn btn-secondary" (click)="cancel()">Cancelar</button>
+</form>
+<div>
